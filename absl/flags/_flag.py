@@ -127,12 +127,11 @@ class Flag(object):
     return NotImplemented
 
   def __getstate__(self):
-    # TODO: fix it
-    raise TypeError("can't pickle FlagValues")
+    odict = self.__dict__
+    return odict
 
-  def __setstate__(self):
-    # TODO: fix it
-    raise TypeError("can't unpickle FlagValues")
+  def __setstate__(self, odict):
+    self.__dict__.update(odict)
 
   def __copy__(self):
     raise TypeError('%s does not support shallow copies. '
